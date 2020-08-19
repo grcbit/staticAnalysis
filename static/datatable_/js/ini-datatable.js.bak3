@@ -1,0 +1,52 @@
+$(document).ready(function() {
+    var table = $('#example').removeAttr('width').DataTable( {
+        //lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        deferRender:    true,
+        scrollY:        "500px",
+        scrollX:        true,
+        scrollCollapse: true,
+        paging:         false,
+        columnDefs: [
+          { 
+            //width: 10, targets: [1,2,3,4,5]
+            width: 500, targets: [17,21,42,43],
+            width: 700, targets: [8,21,22,35,37,38,39,49]
+          }
+        ],
+        //fixedColumns: true,
+        fixedColumns:   {leftColumns: 5}
+        //"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+         //"pageLength": 50
+    } );
+
+    var table = $('#exampleValidation').removeAttr('width').DataTable( {
+        //lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        deferRender:    true,
+        scrollY:        "500px",
+        scrollX:        true,
+        scrollCollapse: true,
+        paging:         false,
+        columnDefs: [
+          {
+            width: 500, targets: [13,17,27,30,31,32,44,49,50,51]
+            //width: 500, targets: [13,17,27,30,31,32,44,48,49,50,59]
+            //width: 750, targets: [8,22,23,35,39,40,41,50]
+          }
+        ],
+        //fixedColumns: true,
+        //"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        //"pageLength": 50
+        fixedColumns:   {leftColumns: 1}
+    } );
+
+    var table = $('#exampleActionPlan').removeAttr('width').DataTable( {
+        //lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        deferRender:    true,
+        scrollY:        "500px",
+        scrollX:        true,
+        scrollCollapse: true,
+        paging:         false,
+    } );
+
+   
+} );

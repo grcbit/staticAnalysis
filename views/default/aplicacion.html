@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+
+<br><strong>{{=T('APP')}}</strong>
+{{if request.vars['msg']:}}
+<div class="{{=request.vars['t']}}"> <strong>{{=request.vars['msg']}}</strong> </div>
+{{pass}}
+
+<h6>
+  {{=form}}
+</h6>
+

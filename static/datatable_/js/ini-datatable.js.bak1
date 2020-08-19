@@ -1,0 +1,45 @@
+$(document).ready(function() {
+    $('#example').DataTable( {
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        scrollY:        '50vh',
+        scrollX:        true,
+        paging:         true,
+        autoWidth:      true,
+        deferRender:    true,
+        columnDefs: [ {
+        //targets: '_all',
+        targets: [10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47],
+        render: function ( data, type, row ) {
+            return data.substr( 0, 50 );
+        }
+        } ],
+        responsive:     true,
+
+        initComplete: function () {
+           //{{if auth.has_membership(role='admin') or auth.has_membership(role='riskSupervisor'):}}
+           //this.api().columns([12,13]).every( function () {
+           //this.api().columns().every( function () {
+           //{{else:}}
+           this.api().columns([0]).every( function () {
+           //{{pass}}
+                var column = this;
+                var select = $('<select><option value=""></option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+        }
+    } );
+
+} );
